@@ -4,14 +4,14 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class ProcessState {
 	
-	protected Queue<PCB> list = new ConcurrentLinkedQueue<PCB>();
+	protected ConcurrentLinkedQueue<PCB> list = new ConcurrentLinkedQueue<PCB>();
 	
 
 	public void nextState(PCB pbc) {
 		// pass
 	}
 	
-	public Queue<PCB> getQueue() {
+	public ConcurrentLinkedQueue<PCB> getQueue() {
 		return list;
 	}
 

@@ -1,9 +1,9 @@
-import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 
 public class ReadyState extends ProcessState {
 
-	public ReadyState(Queue<PCB> readyQueue) {
+	public ReadyState(ConcurrentLinkedQueue<PCB> readyQueue) {
 		super();
 		this.list = readyQueue;
 	}

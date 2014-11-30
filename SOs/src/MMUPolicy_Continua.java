@@ -4,13 +4,44 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 
-public class MMUPolicy_Continua extends MMU implements MMUPolicy {
+public class MMUPolicy_Continua implements MMUPolicy {
+	
+	PhysicalMemory memory;
+	ConcurrentHashMap<Integer, List<Instruction>> secondaryStore;
+	ConcurrentHashMap<Integer, List<Instruction>> particionesAsignadas;
+	ConcurrentHashMap<Integer, List<Instruction>> particionesLibres;
+	
+	
+	public MMUPolicy_Continua(PhysicalMemory memory) {
+		super();
+		this.memory = memory;
+		this.secondaryStore = new ConcurrentHashMap<Integer, List<Instruction>>();
+		this.particionesAsignadas = new ConcurrentHashMap<Integer, List<Instruction>>();
+		this.particionesLibres = new ConcurrentHashMap<Integer, List<Instruction>>();
+	}
 
-	public MMUPolicy_Continua(PhysicalMemory memory,
-			ConcurrentHashMap secondaryStore, MMUPolicy policy) {
-		super(memory, secondaryStore, policy);
+
+	public ConcurrentHashMap<Integer, List<Instruction>> getParticionesAsignadas() {
+		return particionesAsignadas;
+	}
+
+
+
+	public ConcurrentHashMap getParticionesLibres() {
+		return particionesLibres;
 	}
 	
+	
+	public ConcurrentHashMap<Integer,List<Instruction>> getSecondaryStore() {
+		return secondaryStore;
+	}
+	
+	
+	public PhysicalMemory getMemory() {
+		return memory;
+	}
+
+
 	@Override
 	public List<Instruction> load(int pid, Program program) {
         double tamVars = program.getVariables().size();
@@ -41,17 +72,12 @@ public class MMUPolicy_Continua extends MMU implements MMUPolicy {
             
         return instrsForPCB;
 	}
-
-	private Collection<Instruction> replicar(double i, double tamVars) {
-		return null;
-	}
-
-	@Override
-	public void asignar(List<Instruction> particion, int pid) {
+	
+	public boolean asignar(List<Instruction> particion, int pid) {
 		this.getSecondaryStore().put(pid, particion);
+		return true;
 	}
-
-	@Override
+	
 	public void liberar(int pid) {
 		List<Instruction> hueco = this.getParticionesAsignadas().get(pid);
                 
@@ -64,14 +90,7 @@ public class MMUPolicy_Continua extends MMU implements MMUPolicy {
         this.getSecondaryStore().remove(pid) ;
 
 	}
-
-	private void agregarEspacioLibre(Instruction io_Instruction,
-			Instruction io_Instruction2) {
-	}
-
 	
-
-	@Override
 	public Instruction read(int pid, int adress) {
         List<Instruction> particion = this.getParticionesAsignadas().get(pid);
                 
@@ -89,19 +108,64 @@ public class MMUPolicy_Continua extends MMU implements MMUPolicy {
         	return null;
         }
 	}
-
+	
 	@Override
-	public void swapIn(int pid) {
+	public void write(int ref, Instruction value, int adress) {
 		// TODO Auto-generated method stub
-
+		
 	}
-
+	
 	@Override
 	public void swapOut(int pid) {
 		// TODO Auto-generated method stub
 
 	}
+	
+	@Override
+	public void swapIn(int pid) {
+		// TODO Auto-generated method stub
 
+	}
+	
+	public Object espacioLibre(){
+		return null;
+	}
+	
+	public int conseguirEspacio(){
+		return 0;
+	}
+	
+	public int desalocarProcesoConLastDir(){
+		return 0;
+	}
+	
+	private void agregarEspacioLibre(Instruction io_Instruction,
+			Instruction io_Instruction2) {
+	}
+	
+	public void compactar(){
+		
+	}
+
+
+	public void trasladarCeldas(int start, int limit, int offset){
+		
+	}
+
+	
+
+	private Collection<Instruction> replicar(double i, double tamVars) {
+		return null;
+	}
+	
+
+	
+	
+	
+
+	
+
+	
 	
 
 	

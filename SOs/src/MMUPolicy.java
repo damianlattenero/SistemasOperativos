@@ -1,7 +1,7 @@
 import java.util.List;
 public interface MMUPolicy {
 	
-	public void asignar(List<Instruction> particion, int pid);
+	public boolean asignar(List<Instruction> particion, int pid);
 	
 	public void liberar(int pid);
 	

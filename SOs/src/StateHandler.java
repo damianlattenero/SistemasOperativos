@@ -26,16 +26,11 @@ public class StateHandler {
 		this.newState.addProcess(pcb);
         return this.getNewState();
 	}
-
-	public void changeQueues(PCB pcb, ProcessState iniState, ProcessState endState) {
-		iniState.deleteProcess(pcb);
-        endState.addProcess(pcb);
-	}
-
+	
 	public NewState getNewState() {
 		return newState;
-	}
-
+	}	
+	
 	public ReadyState getReadyState() {
 		return readyState;
 	}
@@ -55,7 +50,11 @@ public class StateHandler {
 	public FinishedState getFinishedState() {
 		return finishedState;
 	}
-
+	
+	public void changeQueues(PCB pcb, ProcessState iniState, ProcessState endState) {
+		iniState.deleteProcess(pcb);
+        endState.addProcess(pcb);
+	}
 
 	
 
