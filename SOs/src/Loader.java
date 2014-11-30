@@ -1,16 +1,9 @@
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 
 public class Loader extends PCB {
-
-	
-	
-
-
-	
-
 
 	public Loader(List<Instruction> instrs, int id, int currentInst,
 			StateHandler stateHandler, int priority, IO_Manager iOManager,

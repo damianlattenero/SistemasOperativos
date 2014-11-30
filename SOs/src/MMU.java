@@ -7,7 +7,7 @@ public class MMU {
 	
 	MMUPolicy policy;
 	PhysicalMemory memory;
-	ConcurrentHashMap secondaryStore; 
+	ConcurrentHashMap<Integer, List<Instruction>> secondaryStore; 
 	
 	public MMU(PhysicalMemory memory, MMUPolicy policy) {
 		super();

@@ -27,7 +27,7 @@ public class MMUPolicy_Continua implements MMUPolicy {
 
 
 
-	public ConcurrentHashMap getParticionesLibres() {
+	public ConcurrentHashMap<Integer, List<Instruction>> getParticionesLibres() {
 		return particionesLibres;
 	}
 	
