@@ -9,19 +9,23 @@ public class Instruction {
 
 	public Instruction(Double quantum) {
 		super();
-		if (quantum == null) {
-			this.quantum = (double) (Math.random() * 10);
-		} else {
-			this.quantum = quantum;
-		}
+		this.quantum = quantum;
 		params = new ArrayList<Instruction>();
 	}
+	
+	public Instruction() {
+		super();
+		this.quantum = (double) (Math.random() * 10);
+		params = new ArrayList<Instruction>();
+	}
+	
 	public List<Instruction> getParams() {
 		return params;
 	}
 	
 	
 
+	
 	@Override
 	public String toString() {
 		return "Instr(Quantum " + this.quantum + ")";

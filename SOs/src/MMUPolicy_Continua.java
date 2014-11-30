@@ -55,9 +55,9 @@ public class MMUPolicy_Continua implements MMUPolicy {
             
         List<Instruction> particion = new ArrayList<Instruction>(); 
         
-        particion.addAll(this.replicar(0, tamVars));
+        particion.addAll(this.replicar(tamVars));
         particion.addAll(compiledInstrs);
-        particion.addAll(this.replicar(0, tamData));
+        particion.addAll(this.replicar(tamData));
         
         //[0]*tamVars + compiledInstrs + [0]*tamData;
         
@@ -71,6 +71,15 @@ public class MMUPolicy_Continua implements MMUPolicy {
         }
             
         return instrsForPCB;
+	}
+	
+	private Collection<Instruction> replicar( double tamVars) {
+		List<Instruction> ret = new ArrayList<Instruction>();
+		for(double i=tamVars; i<0; i=i-1){
+			ret.add(new Instruction(0d));
+		}
+		
+		return ret;
 	}
 	
 	public boolean asignar(List<Instruction> particion, int pid) {
@@ -154,9 +163,7 @@ public class MMUPolicy_Continua implements MMUPolicy {
 
 	
 
-	private Collection<Instruction> replicar(double i, double tamVars) {
-		return null;
-	}
+	
 	
 
 	
