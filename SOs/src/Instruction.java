@@ -45,7 +45,7 @@ public class Instruction {
 		//do nothing
 	}
 
-	public void asignarDirsLogicasAsigContinua(List<Integer> list) {
+	public void asignarDirsLogicasAsigContinua(List<String> list) {
 //		for (int i = 0; i < this.getParams().size(); i++) {
 //			this.params.set(i, vars.indexOf(this.params.get(i)));
 //		}

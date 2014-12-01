@@ -59,7 +59,6 @@ public class MMUPolicy_Continua implements MMUPolicy {
         particion.addAll(compiledInstrs);
         particion.addAll(this.replicar(tamData));
         
-        //[0]*tamVars + compiledInstrs + [0]*tamData;
         
         this.asignar(particion, pid);
         
@@ -119,7 +118,7 @@ public class MMUPolicy_Continua implements MMUPolicy {
 	}
 	
 	@Override
-	public void write(int ref, Instruction value, int adress) {
+	public void write(int ref, String value, int adress) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -79,6 +79,7 @@ public class STS extends Thread{
         		
         	}else{
         		System.out.println("No process to execute is available");
+        		this.os.shutDown();
         		try {
 					sleep(1);
 				} catch (InterruptedException e) {

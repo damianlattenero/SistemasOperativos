@@ -9,10 +9,10 @@ public class LTS {
 	int actualSTS_Index = 0;
 	ConcurrentLinkedQueue<PCB> jobQueue = new ConcurrentLinkedQueue<PCB>();
 	IO_Manager iOManager;
-	MMUPolicy mmu_policy;
+	MMU mmu_policy;
 	List<STS> stss = new ArrayList<STS>();
 
-	public LTS(IO_Manager iOManager, MMUPolicy mmu_policy, List<STS> stss) {
+	public LTS(IO_Manager iOManager, MMU mmu_policy, List<STS> stss) {
 		super();
 		this.iOManager = iOManager;
 		this.mmu_policy = mmu_policy;
@@ -65,13 +65,12 @@ public class LTS {
 	}
 
 	public PCB start(Program program, int priority) {
-		ConcurrentHashMap<String, Integer> neededDevicesMap = this
-				.makeMapForNeededDevices(program.getInstructions());
+		ConcurrentHashMap<String, Integer> neededDevicesMap = this.makeMapForNeededDevices(program.getInstructions());
 		if (this.enoughResources(neededDevicesMap)) {
 			STS actualSts = this.getActualSts();
 
 			Program programCopy = program.copy();
-			List<Instruction> instrs = this.mmu_policy.load(LTS.id,
+			List<Instruction> instrs = this.mmu_policy.getPolicy().load(LTS.id,
 					programCopy);
 
 			PCB newPCB = new PCB(instrs, LTS.id, this.actualSTS_Index,
@@ -92,12 +91,12 @@ public class LTS {
 
 	public void processTerminated(PCB pcb) {
 		this.jobQueue.remove(pcb);
-		this.mmu_policy.liberar(pcb.getId());
+		this.mmu_policy.getPolicy().liberar(pcb.getId());
 	}
 
 	public void kill(PCB pcb) {
 		this.jobQueue.remove(pcb);
-		this.mmu_policy.liberar(pcb.getId());
+		this.mmu_policy.getPolicy().liberar(pcb.getId());
 		pcb.setFinished();
 	}
 

@@ -1,12 +1,14 @@
 
 public class OPMov extends OPMemory {
-	
+
+	int source;
+	int dest;
 
 	
-	
-
-	public OPMov(Double quantum, int source, int dest) {
-		super(quantum, source, dest);
+	public OPMov(int source, int dest) {
+		super(0.1);
+		this.source = source;
+		this.dest = dest;
 	}
 
 	@Override
@@ -25,10 +27,9 @@ public class OPMov extends OPMemory {
 				
 	}
 	
-	
 	public void run(int pid, MMU mmu) {
-        Instruction sourceValue = mmu.read(pid, this.getSource());       
-        mmu.write(pid, sourceValue, this.getDest());
+        Instruction sourceValue = mmu.read(pid, this.getSource());
+        mmu.getPolicy().write(pid, sourceValue.toString(), this.getDest());
 	}
 
 }

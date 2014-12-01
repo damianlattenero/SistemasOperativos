@@ -2,7 +2,7 @@
 public class CPU extends Thread{
 	
 	private Log log;
-	private int id;
+	private String id;
 	private boolean isIdle;
 	private float delay;
 	private MMU mmu;
@@ -10,7 +10,7 @@ public class CPU extends Thread{
 	private Pair<Integer, Instruction> pc;
 	int adress;
 	
-	public CPU(Log log, int id, float delay, MMU mmu, int destino) {
+	public CPU(Log log, String id, float delay, MMU mmu) {
 		super();
 		this.log = log;
 		this.id = id;
@@ -19,9 +19,10 @@ public class CPU extends Thread{
 		this.mmu = mmu;
 		this.registers = new int[]{0,0,0,0,0,0,0,0};
 		this.pc = new Pair<Integer, Instruction>(null, null);
-		this.adress = destino;
+		this.adress = 0;
 	}
 	
+
 	public MMU getMmu() {
 		return mmu;
 	}

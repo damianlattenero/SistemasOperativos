@@ -36,15 +36,14 @@ public class LoadInstr extends Instruction {
     	this.getMMUPolicy().load(this.getPid(), this.getProgram());
     }
     
-    public void asignarDirsLogicasAsigContinua(List vars){
-//        for(LoadInstr i : this.params){
-//        	this.params.set(i, vars.get(i));
-//        }
+    @Override
+    public void asignarDirsLogicasAsigContinua(List<String> vars){
+        //this.params.addAll(vars);
     }
 
 	@Override
 	public void run(Integer pid, MMU mmu) {
-		// TODO Auto-generated method stub
+		this.getMMUPolicy().load(this.getPid(), this.getProgram());
 		
 	}
 

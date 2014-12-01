@@ -11,9 +11,9 @@ public class OperatingSystem {
 	IO_Manager iOManager;
 	LTS lts;
 	boolean isUp;
-	MMUPolicy mmu_policy;
+	MMU mmu_policy;
 	
-	public OperatingSystem(List<SchedulingPolicy> policies, List<CPU> cpus, MMUPolicy mmu_policy, ConcurrentHashMap<String, IO_Device> devices) {
+	public OperatingSystem(List<SchedulingPolicy> policies, List<CPU> cpus, MMU mmu_policy, ConcurrentHashMap<String, IO_Device> devices) {
 		super();
 		this.stss = new ArrayList<STS>();
 		this.policies = policies;
@@ -24,6 +24,7 @@ public class OperatingSystem {
 		this.mmu_policy = mmu_policy;
 	}
 
+
 	public IO_Manager getiOManager() {
 		return iOManager;
 	}
@@ -31,7 +32,7 @@ public class OperatingSystem {
 	public void assignSTSforCpus() {
         int cantPolicies = this.policies.size();
         SchedulingPolicy policy;    
-        for(int i=this.cpus.size(); i<0; i--){
+        for(int i=(this.cpus.size()-1); i>0; i--){
         	if(i < cantPolicies){
         		
         		policy = this.policies.get(i);
@@ -39,10 +40,10 @@ public class OperatingSystem {
         	}else{
         		
         		policy = this.defaultPolicy();
-        	    STS sts = new STS(policy, this.cpus.get(i), this, this.getiOManager());
-        		this.stss.add(sts);
-        				
+        	
         	}
+        	STS sts = new STS(policy, this.cpus.get(i), this, this.getiOManager());
+    		this.stss.add(sts);
         }
                         
 	}

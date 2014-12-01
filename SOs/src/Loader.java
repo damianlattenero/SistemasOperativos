@@ -12,7 +12,7 @@ public class Loader extends PCB {
 		super(instrs, id, currentInst, stateHandler, priority, iOManager, lts,
 				neededDevices, list);
 		
-		LoadInstr in = new LoadInstr(0.5, lts.mmu_policy, program, pid);
+		LoadInstr in = new LoadInstr(0.5, lts.mmu_policy.getPolicy(), program, pid);
 		this.getInstrs().add(in);
 	}
 

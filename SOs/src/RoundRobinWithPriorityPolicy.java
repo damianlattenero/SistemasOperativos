@@ -15,6 +15,13 @@ public class RoundRobinWithPriorityPolicy extends RoundRobinPolicy {
 		this.maxTimes = 2;
 	}
 	
+	public RoundRobinWithPriorityPolicy(double quantum) {
+		super(quantum);
+		this.queue = new PriorityBlockingQueue();
+		this.lastAndTimes = new Pair<PCB,Integer>(null, null);
+		this.maxTimes = 2;
+	}
+
 	public Integer getMaxTimes() {
 		return maxTimes;
 	}

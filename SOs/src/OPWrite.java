@@ -2,12 +2,16 @@
 public class OPWrite extends OPMemory {
 	
 
-	Instruction value;
+	String value;
+	int dest;
+
+
 	
 
-	public OPWrite(Double quantum, int source, int dest, Instruction value) {
-		super(quantum, source, dest);
-		this.value = value;
+	public OPWrite(int dest, String string) {
+		super(0.5);
+		this.dest = dest;
+		this.value = string;
 	}
 
 	@Override
@@ -17,6 +21,15 @@ public class OPWrite extends OPMemory {
 	}
 	
 	
+	
+	public String getValue() {
+		return value;
+	}
+
+	public int getDest() {
+		return dest;
+	}
+
 	public void run(int pid, MMU mmu) {
 		 mmu.write(pid, this.value, this.getDest());
 	}

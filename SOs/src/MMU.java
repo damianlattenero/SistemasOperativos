@@ -29,12 +29,12 @@ public class MMU {
 		return policy;
 	}
 
-	public synchronized void write(int ref, Instruction value, int adress){
-		this.getPolicy().write(ref,value, adress);
+	public synchronized void write(int ref, String value, int dest){
+		this.getPolicy().write(ref,value, dest);
 	}
 
-	public synchronized Instruction read(Integer pid, int instr) {
-		return this.getPolicy().read(pid, instr);
+	public synchronized Instruction read(Integer pid, int i) {
+		return this.getPolicy().read(pid, i);
 	}
 
 }

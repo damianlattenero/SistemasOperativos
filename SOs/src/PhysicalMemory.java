@@ -17,6 +17,13 @@ public class PhysicalMemory {
 		this.cells = this.createMemory();
 	}
 
+	public PhysicalMemory(int cellAmount) {
+		super();
+		this.sizePerCells = 8;
+		this.cellAmount = cellAmount;
+		this.cells = this.createMemory();
+	}
+
 	private List<Instruction> createMemory() {
 		List<Instruction> ret = new ArrayList<Instruction>();
 		
