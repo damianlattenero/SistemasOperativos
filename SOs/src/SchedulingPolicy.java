@@ -37,7 +37,6 @@ public class SchedulingPolicy {
         
         while(this.interruptCondition(process, cpu)){
         	this.executePolicy(process, cpu);
-        	
         }
             
         process.setRegisters(cpu.getRegisters());

@@ -5,21 +5,21 @@ import java.util.Map;
 public class Instruction {
 
 	Double quantum;
-	List<Instruction> params;
+	List<String> params;
 
 	public Instruction(Double quantum) {
 		super();
 		this.quantum = quantum;
-		params = new ArrayList<Instruction>();
+		params = new ArrayList<String>();
 	}
 	
 	public Instruction() {
 		super();
 		this.quantum = (double) (Math.random() * 10);
-		params = new ArrayList<Instruction>();
+		params = new ArrayList<String>();
 	}
 	
-	public List<Instruction> getParams() {
+	public List<String> getParams() {
 		return params;
 	}
 	
@@ -45,24 +45,24 @@ public class Instruction {
 		//do nothing
 	}
 
-	public void asignarDirsLogicasAsigContinua(List<String> list) {
-//		for (int i = 0; i < this.getParams().size(); i++) {
-//			this.params.set(i, vars.indexOf(this.params.get(i)));
-//		}
+	public void asignarDirsLogicasAsigContinua(List<String> vars) {
+		for (int i = 0; i < this.getParams().size(); i++) {
+			this.params.set(i, vars.get(i));
+		}
 
 	}
 	
-	public void asignarDirsLogicasSegmentacion(List<Instruction> vars){
+//	public void asignarDirsLogicasSegmentacion(List<Instruction> vars){
 //		for (int i=0; i < this.getParams().size(); i++){
 //			this.params.set(i, vars.indexOf(this.params.get(i)));
 //			                   //(1,vars.index(self.params[i]))
 //		}
-	}
-
-	public void asignarDirsLogicasPaginacion(Map mapVars){
+//	}
+//
+//	public void asignarDirsLogicasPaginacion(Map mapVars){
 //		for (int i=0; i < this.getParams().size(); i++){
 //			this.params.set(i, (Integer) mapVars.get(this.params.get(i)));
 //		}
-	}
+//	}
 
 }

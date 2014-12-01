@@ -73,9 +73,8 @@ public class LTS {
 			List<Instruction> instrs = this.mmu_policy.getPolicy().load(LTS.id,
 					programCopy);
 
-			PCB newPCB = new PCB(instrs, LTS.id, this.actualSTS_Index,
-					actualSts.stateHandler, priority, iOManager, this,
-					neededDevicesMap, program.getInstructions());
+			PCB newPCB = new PCB(instrs, LTS.id,actualSts.stateHandler, priority, this.iOManager, this, neededDevicesMap, program.getInstructions());
+			
 			if (!neededDevicesMap.isEmpty()) {
 				iOManager.addProcessWithIO(newPCB);
 			}

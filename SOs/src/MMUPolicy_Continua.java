@@ -64,7 +64,7 @@ public class MMUPolicy_Continua implements MMUPolicy {
         
         List<Instruction> instrsForPCB = new ArrayList<Instruction>();
         
-        for(int i=compiledInstrs.size();i<0;i--){
+        for(int i=compiledInstrs.size();i>0;i--){
         	Instruction io_Instruction = new IO_Instruction(i+tamVars, null);
 			instrsForPCB.add(io_Instruction);
         }

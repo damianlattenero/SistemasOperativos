@@ -38,7 +38,7 @@ public class LoadInstr extends Instruction {
     
     @Override
     public void asignarDirsLogicasAsigContinua(List<String> vars){
-        //this.params.addAll(vars);
+        this.params.addAll(vars);
     }
 
 	@Override

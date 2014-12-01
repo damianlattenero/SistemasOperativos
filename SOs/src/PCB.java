@@ -20,46 +20,28 @@ public class PCB {
 	private List<Instruction> fetchedInstr;
 	int[] registers = {0,0,0,0,0,0,0,0,0};
 
-	public PCB(List<Instruction> instrs, int id, int currentInst,
-			StateHandler stateHandler, int priority,
+	public PCB(List<Instruction> instrs, int id, StateHandler stateHandler, int priority,
 			IO_Manager iOManager, LTS lts, ConcurrentHashMap<String, Integer> neededDevices, List<Instruction> list) {
 		super();
 		this.instrs = instrs;
 		this.id = id;
-		this.currentInst = currentInst;
+		this.currentInst = 0;
 		this.stateHandler = stateHandler;
 		this.state = stateHandler.get_firstState(this);
 		this.priority = priority;
 		this.iOManager = iOManager;
 		this.lts = lts;
 		this.neededDevices = neededDevices;
+		this.actualDevices = new ConcurrentHashMap<String, Integer>();
+		
+		for(String dv : this.neededDevices.keySet()){
+			this.actualDevices.put(dv, 0);
+		}
+		
+		
 		this.fetchedInstr = list;
 	}
 	
-	
-
-
-
-
-	public PCB(int id, int currentInst, StateHandler stateHandler,
-			ProcessState state, int priority, IO_Manager iOManager, LTS lts,
-			ConcurrentHashMap<String, Integer> neededDevices,
-			ConcurrentHashMap<String, Integer> actualDevices,
-			List<Instruction> fetchedInstr, int[] registers) {
-		super();
-		this.instrs = new ArrayList<Instruction>();
-		this.id = id;
-		this.currentInst = currentInst;
-		this.stateHandler = stateHandler;
-		this.state = state;
-		this.priority = priority;
-		this.iOManager = iOManager;
-		this.lts = lts;
-		this.neededDevices = neededDevices;
-		this.actualDevices = actualDevices;
-		this.fetchedInstr = fetchedInstr;
-		this.registers = registers;
-	}
 	
 	public LTS getLts() {
 		return lts;

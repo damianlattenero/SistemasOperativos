@@ -79,9 +79,9 @@ public class STS extends Thread{
         		
         	}else{
         		System.out.println("No process to execute is available");
-        		this.os.shutDown();
+        		//this.os.shutDown();
         		try {
-					sleep(1);
+					sleep(1000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
