@@ -8,10 +8,10 @@ public class OPWrite extends OPMemory {
 
 	
 
-	public OPWrite(int dest, String string) {
+	public OPWrite(int dest, Instruction string) {
 		super(0.5);
 		this.dest = dest;
-		this.value = string;
+		this.value = string.toString();
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class OPWrite extends OPMemory {
 	}
 
 	public void run(int pid, MMU mmu) {
-		 mmu.write(pid, this.value, this.getDest());
+		 mmu.write(pid, new Instruction(), this.getDest());
 	}
 
 }

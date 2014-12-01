@@ -5,13 +5,10 @@ public interface MMUPolicy {
 	
 	public void liberar(int pid);
 	
-	public void write(int ref, String value, int dest);
+	public void write(int ref, Instruction value, int dest);
 	
 	public Instruction read(int ref, int i);
 	
-	public void swapIn(int pid);
-	
-	public void swapOut(int pid);
 	
 	public List<Instruction> load(int pid, Program program);
 	

@@ -36,8 +36,8 @@ public class MainSimulation {
 	
 	public void simulacionSegmentacion_10Programas_PrinterYScanner_TodasLasPoliticasScheduling(){
 		List<Instruction> instructions = new ArrayList<Instruction>();
-		instructions.add(new OPWrite(50, "A"));
-		instructions.add(new OPWrite(25, "B"));
+		instructions.add(new OPWrite(50, new Instruction()));
+		instructions.add(new OPWrite(25, new Instruction()));
 		instructions.add(new OPMov(25, 50));
 		List<String> vars = new ArrayList<String>();
 		vars.add("A");

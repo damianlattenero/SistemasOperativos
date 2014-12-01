@@ -91,7 +91,6 @@ public class MMUPolicy_Continua implements MMUPolicy {
                 
         if(hueco != null){
         	this.getParticionesAsignadas().remove(pid);
-        	this.agregarEspacioLibre(hueco.get(0), hueco.get(1));
         	
         	
         }
@@ -101,10 +100,7 @@ public class MMUPolicy_Continua implements MMUPolicy {
 	
 	public Instruction read(int pid, int adress) {
         List<Instruction> particion = this.getParticionesAsignadas().get(pid);
-                
-        if (particion != null){
-        	this.swapIn(pid);
-        }
+               
             
         particion = this.getParticionesAsignadas().get(pid);
         int physicalDir = (int) (particion.get(0).getQuantum() + adress);
@@ -118,47 +114,13 @@ public class MMUPolicy_Continua implements MMUPolicy {
 	}
 	
 	@Override
-	public void write(int ref, String value, int adress) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public void swapOut(int pid) {
-		// TODO Auto-generated method stub
-
-	}
-	
-	@Override
-	public void swapIn(int pid) {
-		// TODO Auto-generated method stub
-
-	}
-	
-	public Object espacioLibre(){
-		return null;
-	}
-	
-	public int conseguirEspacio(){
-		return 0;
-	}
-	
-	public int desalocarProcesoConLastDir(){
-		return 0;
-	}
-	
-	private void agregarEspacioLibre(Instruction io_Instruction,
-			Instruction io_Instruction2) {
-	}
-	
-	public void compactar(){
-		
+	public void write(int pid, Instruction value, int adress) {
+        this.getMemory().write(adress, value);
 	}
 
 
-	public void trasladarCeldas(int start, int limit, int offset){
-		
-	}
+	
+	
 
 	
 

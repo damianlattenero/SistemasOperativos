@@ -29,7 +29,7 @@ public class OPMov extends OPMemory {
 	
 	public void run(int pid, MMU mmu) {
         Instruction sourceValue = mmu.read(pid, this.getSource());
-        mmu.getPolicy().write(pid, sourceValue.toString(), this.getDest());
+        mmu.getPolicy().write(pid, sourceValue, this.getDest());
 	}
 
 }

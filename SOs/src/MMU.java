@@ -29,7 +29,7 @@ public class MMU {
 		return policy;
 	}
 
-	public synchronized void write(int ref, String value, int dest){
+	public synchronized void write(int ref, Instruction value, int dest){
 		this.getPolicy().write(ref,value, dest);
 	}
 
